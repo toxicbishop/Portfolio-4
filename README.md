@@ -1,4 +1,4 @@
-# Portfolio-4
+# <img src="public/icons/favicon.svg" width="32" height="32" alt="favicon"> Portfolio-4
 
 Welcome to the source code of my personal portfolio – [pranavarun.com](https://pranavarun.com), built with [Astro](https://astro.build).
 
