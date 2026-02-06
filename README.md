@@ -10,8 +10,8 @@ To run the project locally:
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/toxicbishop/portfolio-2026.git
-cd portfolio-2026
+git clone https://github.com/toxicbishop/Portfolio-4.git
+cd Portfolio-4
 
 # 2. Install dependencies
 npm install
