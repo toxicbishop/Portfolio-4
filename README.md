@@ -1,6 +1,6 @@
 # <img src="public/icons/favicon.svg" width="32" height="32" alt="favicon"> Portfolio-4
 
-Welcome to the source code of my personal portfolio – [pranavarun.com](https://pranavarun.com), built with [Astro](https://astro.build).
+Welcome to the source code of my personal portfolio built with [Astro](https://astro.build).
 
 This portfolio showcases my work as a 3rd Year B.E Student specializing in MERN Stack, Cyber Security, and AI.
 
