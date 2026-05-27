@@ -2957,6 +2957,7 @@ body[data-theme="dark"] .map-popup-company span {
 .project-card:nth-child(3) { border-top: 6px solid var(--pink); }
 .project-card:nth-child(4) { border-top: 6px solid var(--accent); }
 .project-card:nth-child(5) { border-top: 6px solid var(--cyan); }
+.project-card:nth-child(6) { border-top: 6px solid var(--yellow); }
 
 /* Contact Section - Sticky Notes */
 .contact-container-compact {
