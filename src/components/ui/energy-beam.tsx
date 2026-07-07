@@ -7,7 +7,9 @@ interface EnergyBeamProps {
 
 declare global {
     interface Window {
-        UnicornStudio?: any;
+        UnicornStudio?: {
+            init: () => void;
+        };
     }
 }
 

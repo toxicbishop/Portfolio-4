@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import EnergyBeam from "@/components/ui/energy-beam";
 import { ArrowRight, Zap, Sparkles, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ export default function Home() {
             <span>Unleash the power of Unicorn Studio</span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50">
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-linear-to-br from-white to-white/50">
             Next Generation <br className="hidden md:block" /> UI Components
           </h1>
           
@@ -60,42 +61,48 @@ export default function Home() {
 
         {/* Features / Image section */}
         <section className="pb-16 px-6 max-w-7xl mx-auto w-full grid md:grid-cols-3 gap-6">
-          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm">
-            <img 
+          <div className="group relative rounded-3xl overflow-hidden aspect-4/3 bg-white/5 border border-white/10 backdrop-blur-sm">
+            <Image 
               src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
               alt="Abstract energy flow" 
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
+              fill
+              unoptimized
+              className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6">
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6 pointer-events-none">
               <h3 className="text-xl font-bold mb-2">High Performance</h3>
               <p className="text-sm text-white/60">60 FPS WebGL rendering powered by Unicorn Studio for smooth visual fidelity.</p>
             </div>
           </div>
           
-          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm md:-translate-y-8">
-            <img 
+          <div className="group relative rounded-3xl overflow-hidden aspect-4/3 bg-white/5 border border-white/10 backdrop-blur-sm md:-translate-y-8">
+            <Image 
               src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop" 
               alt="Digital infrastructure" 
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
+              fill
+              unoptimized
+              className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6">
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6 pointer-events-none">
               <h3 className="text-xl font-bold mb-2">Seamless Integration</h3>
               <p className="text-sm text-white/60">Easily combine with your existing Next.js layout and Tailwind classes.</p>
             </div>
           </div>
 
-          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm">
-            <img 
+          <div className="group relative rounded-3xl overflow-hidden aspect-4/3 bg-white/5 border border-white/10 backdrop-blur-sm">
+            <Image 
               src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2670&auto=format&fit=crop" 
               alt="Space and depth" 
-              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
+              fill
+              unoptimized
+              className="object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6">
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6 pointer-events-none">
               <h3 className="text-xl font-bold mb-2">Infinite Depth</h3>
-              <p className="text-sm text-white/60">Create immersive spatial designs that capture your users' attention.</p>
+              <p className="text-sm text-white/60">Create immersive spatial designs that capture your users&apos; attention.</p>
             </div>
           </div>
         </section>
