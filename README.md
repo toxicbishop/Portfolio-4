@@ -1,6 +1,6 @@
 # Energy Core
 
-![Dashboard Preview](public/assets/Dashboard.gif)
+![Dashboard Preview](public/assets/Dashboard.mp4)
 
 A next-generation React application built with Next.js, showcasing dynamic WebGL energy effects using the `EnergyBeam` component (powered by Unicorn Studio).
 
