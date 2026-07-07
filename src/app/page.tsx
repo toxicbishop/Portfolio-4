@@ -1,65 +1,105 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import EnergyBeam from "@/components/ui/energy-beam";
+import { ArrowRight, Zap, Sparkles, Code2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="relative min-h-screen bg-black text-white font-sans selection:bg-white/30">
+      {/* Background Energy Beam Effect */}
+      <div className="absolute inset-0 z-0">
+        <EnergyBeam />
+      </div>
+
+      {/* Foreground Content overlay */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* Navigation / Header */}
+        <header className="flex items-center justify-between p-6 max-w-7xl mx-auto w-full">
+          <div className="flex items-center gap-2">
+            <Zap className="w-8 h-8 text-white" />
+            <span className="text-xl font-bold tracking-wider uppercase">Energy Core</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+            <a href="#" className="hover:text-white transition-colors">Features</a>
+            <a href="#" className="hover:text-white transition-colors">Documentation</a>
+            <a href="#" className="hover:text-white transition-colors">Showcase</a>
+            <Button variant="outline" className="bg-white/10 border-white/20 hover:bg-white/20 text-white rounded-full">
+              Sign In
+            </Button>
+          </nav>
+        </header>
+
+        {/* Hero Section */}
+        <section className="flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto w-full pb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-8 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4" />
+            <span>Unleash the power of Unicorn Studio</span>
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50">
+            Next Generation <br className="hidden md:block" /> UI Components
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <p className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl font-light">
+            Integrate incredible WebGL and animated effects directly into your React applications with zero friction and maximum performance.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+          
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Button size="lg" className="h-12 px-8 rounded-full bg-white text-black hover:bg-white/90 text-base font-semibold group">
+              Get Started
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button size="lg" variant="outline" className="h-12 px-8 rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white text-base">
+              <Code2 className="w-4 h-4 mr-2" />
+              View Documentation
+            </Button>
+          </div>
+        </section>
+
+        {/* Features / Image section */}
+        <section className="pb-16 px-6 max-w-7xl mx-auto w-full grid md:grid-cols-3 gap-6">
+          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+              alt="Abstract energy flow" 
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6">
+              <h3 className="text-xl font-bold mb-2">High Performance</h3>
+              <p className="text-sm text-white/60">60 FPS WebGL rendering powered by Unicorn Studio for smooth visual fidelity.</p>
+            </div>
+          </div>
+          
+          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm md:-translate-y-8">
+            <img 
+              src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop" 
+              alt="Digital infrastructure" 
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6">
+              <h3 className="text-xl font-bold mb-2">Seamless Integration</h3>
+              <p className="text-sm text-white/60">Easily combine with your existing Next.js layout and Tailwind classes.</p>
+            </div>
+          </div>
+
+          <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 backdrop-blur-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=2670&auto=format&fit=crop" 
+              alt="Space and depth" 
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-opacity duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6">
+              <h3 className="text-xl font-bold mb-2">Infinite Depth</h3>
+              <p className="text-sm text-white/60">Create immersive spatial designs that capture your users' attention.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
