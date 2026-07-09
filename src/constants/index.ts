@@ -1,25 +1,25 @@
 export const Skill_data = [
     {
-        skill_name: "Html 5",
+        skill_name: "HTML 5",
         Image: "/lang&frameworks/html.png",
         width: 80,
         height: 80,
     },
     {
-        skill_name: "Css",
+        skill_name: "CSS",
         Image: "/lang&frameworks/css.png",
         width: 80,
         height: 80,
     },
     {
-        skill_name: "Java Script",
+        skill_name: "JavaScript",
         Image: "/lang&frameworks/js.png",
         width: 65,
         height: 65,
     },
     {
-        skill_name: "Tailwind Css",
-        Image: "/lang&frameworks/tailwind.png",
+        skill_name: "TypeScript",
+        Image: "/lang&frameworks/ts.png",
         width: 80,
         height: 80,
     },
@@ -30,19 +30,19 @@ export const Skill_data = [
         height: 80,
     },
     {
-        skill_name: "Type Script",
-        Image: "/lang&frameworks/ts.png",
-        width: 80,
-        height: 80,
-    },
-    {
-        skill_name: "Next js 13",
+        skill_name: "Next.js 13",
         Image: "/lang&frameworks/next.png",
         width: 80,
         height: 80,
     },
     {
-        skill_name: "Mongo DB",
+        skill_name: "Tailwind CSS",
+        Image: "/lang&frameworks/tailwind.png",
+        width: 80,
+        height: 80,
+    },
+    {
+        skill_name: "MongoDB",
         Image: "/lang&frameworks/MongoDB.svg",
         width: 80,
         height: 80,
@@ -69,25 +69,25 @@ export const Socials = [
 
 export const Frontend_skill = [
     {
-        skill_name: "Html 5",
+        skill_name: "HTML 5",
         Image: "/lang&frameworks/html.png",
         width: 50,
         height: 50,
     },
     {
-        skill_name: "Css",
+        skill_name: "CSS",
         Image: "/lang&frameworks/css.png",
         width: 60,
         height: 60,
     },
     {
-        skill_name: "Java Script",
+        skill_name: "JavaScript",
         Image: "/lang&frameworks/js.png",
         width: 50,
         height: 50,
     },
     {
-        skill_name: "Type Script",
+        skill_name: "TypeScript",
         Image: "/lang&frameworks/ts.png",
         width: 50,
         height: 50,
@@ -99,13 +99,13 @@ export const Frontend_skill = [
         height: 55,
     },
     {
-        skill_name: "Next js 13",
+        skill_name: "Next.js 13",
         Image: "/lang&frameworks/next.png",
         width: 55,
         height: 55,
     },
     {
-        skill_name: "Tailwind Css",
+        skill_name: "Tailwind CSS",
         Image: "/lang&frameworks/tailwind.png",
         width: 55,
         height: 55,
@@ -132,13 +132,13 @@ export const Backend_skill = [
         height: 40,
     },
     {
-        skill_name: "My SQL",
+        skill_name: "MySQL",
         Image: "/lang&frameworks/mysql.png",
         width: 45,
         height: 45,
     },
     {
-        skill_name: "Mongo DB",
+        skill_name: "MongoDB",
         Image: "/lang&frameworks/MongoDB.svg",
         width: 40,
         height: 40,
@@ -216,7 +216,7 @@ export const libraries = [
         height: 50,
     },
     {
-        skill_name: "Tailwind Css",
+        skill_name: "Tailwind CSS",
         Image: "/lang&frameworks/tailwind.png",
         width: 50,
         height: 50,
@@ -234,7 +234,7 @@ export const libraries = [
         height: 50,
     },
     {
-        skill_name: "Three js",
+        skill_name: "Three.js",
         Image: "/lang&frameworks/Three.js.svg",
         width: 60,
         height: 60,
@@ -275,7 +275,7 @@ export const ProjectsData = [
     {
         title: "Bengaluru Cost Explorer",
         description: "An interactive explorer for analyzing and visualizing the cost of living and real estate trends in Bengaluru.",
-        image: "/projects/costoflivingbenagluru.png",
+        image: "/projects/costoflivingbengaluru.png",
         github: "https://github.com/Mohammed0572/bengaluru-cost-explorer",
         website: "https://costinbengaluru.netlify.app",
         tags: ["React", "Python", "Data Analysis", "Tailwind"]

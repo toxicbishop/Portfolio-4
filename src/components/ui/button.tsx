@@ -1,5 +1,6 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
+import { motion, MotionProps } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -40,19 +41,31 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
+// Motion variants for button interactions
+const buttonMotionVariants = {
+  whileHover: { scale: 1.05 },
+  whileTap: { scale: 0.95 },
+}
+
+const Button = motion(ButtonPrimitive) as React.ComponentType<
+  ButtonPrimitive.Props & VariantProps<typeof buttonVariants> & MotionProps
+>
+
+function ButtonExtended({
   className,
   variant = "default",
   size = "default",
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props &
+    VariantProps<typeof buttonVariants> &
+    Partial<MotionProps>) {
   return (
-    <ButtonPrimitive
-      data-slot="button"
+    <Button
+      variants={buttonMotionVariants}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
   )
 }
 
-export { Button, buttonVariants }
+export { ButtonExtended as Button, buttonVariants }
