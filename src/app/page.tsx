@@ -14,7 +14,7 @@ import {
 } from "@/constants";
 import { motion, MotionProps } from "framer-motion";
 import { useReducedMotion } from "@/animations/useReducedMotion";
-import { animateSkillCategories, useSkillIconHover, useSkillIconFloat } from "@/animations/gsap";
+import { animateSkillCategories } from "@/animations/gsap";
 
 export default function Home() {
   const reducedMotion = useReducedMotion();
@@ -35,13 +35,13 @@ export default function Home() {
     }
   }, []);
 
-  // Helper to get motion props based on reduced motion preference
-  const getMotionProps = <T,>(defaults: T): Partial<MotionProps> => {
+  // Helper to get motion props based onotion preference
+  const getMotionProps = <T>(defaults: T): Partial<MotionProps> => {
     if (reducedMotion) {
       // If reduced motion, set initial and animate to the same final state
-      return { initial: undefined as any, animate: undefined as any };
+      return { initial: undefined, animate: undefined };
     }
-    return {} as Partial<MotionProps>;
+    return {};
   };
 
   // Helper for hover/tap styles
@@ -96,7 +96,7 @@ export default function Home() {
             initial={reducedMotion ? undefined : { y: -20, opacity: 0 }}
             animate={reducedMotion ? undefined : { y: 0, opacity: 1 }}
             transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-8 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-10 backdrop-blur-md"
           >
             <Sparkles className="w-4 h-4 text-cyan-400" />
             <span>Full Stack Developer</span>
@@ -110,7 +110,7 @@ export default function Home() {
             className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-linear-to-br from-white to-white/50 drop-shadow-lg"
           >
             Building Digital <br className="hidden md:block" /> Experiences
-          </h1>
+          </motion.h1>
           
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 drop-shadow-md">
             Hi, I&apos;m Pranav Arun. I specialize in building scalable web applications, robust backends, and beautiful user interfaces that solve real-world problems.
@@ -129,7 +129,7 @@ export default function Home() {
                 GitHub
               </Button>
             </a>
-          </motion.div>
+          </div>
         </section>
 
         {/* Skills Section */}
@@ -161,7 +161,7 @@ export default function Home() {
                       }}
                       whileHover={getHoverStyles()}
                       whileTap={getTapStyles()}
-                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-22.5 h-22.5 shadow-inner"
                     >
                       <Image
                         src={skill.Image}
@@ -198,7 +198,7 @@ export default function Home() {
                       }}
                       whileHover={getHoverStyles()}
                       whileTap={getTapStyles()}
-                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-22.5 h-22.5 shadow-inner"
                     >
                       <Image
                         src={skill.Image}
@@ -235,7 +235,7 @@ export default function Home() {
                       }}
                       whileHover={getHoverStyles()}
                       whileTap={getTapStyles()}
-                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-22.5 h-22.5 shadow-inner"
                     >
                       <Image
                         src={skill.Image}
@@ -267,7 +267,7 @@ export default function Home() {
                 key={project.title}
                 whileInView={reducedMotion ? {} : { scale: 1.03, opacity: 1 }}
                 viewport={{ once: true, margin: "-200px" }}
-                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-black/60 border border-white/10 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
+                className="group relative rounded-3xl overflow-hidden aspect-4/3 bg-black/60 border border-white/10 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
               >
                 <Image
                   src={project.image}
