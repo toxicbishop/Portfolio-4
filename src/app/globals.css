@@ -122,11 +122,61 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+ body {
+   @apply bg-background text-foreground;
+ }
+ html {
+   @apply font-sans;
+   scroll-behavior: smooth;
+ }
+}
+
+.energy-particle {
+  position: absolute;
+  left: var(--particle-x);
+  top: var(--particle-y);
+  width: var(--particle-size);
+  height: var(--particle-size);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 0 12px rgba(103, 232, 249, 0.55);
+  opacity: var(--particle-opacity);
+  animation:
+    energy-particle-float var(--particle-duration) ease-in-out var(--particle-delay) infinite,
+    energy-particle-pulse 3.8s ease-in-out var(--particle-delay) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes energy-particle-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  html {
-    @apply font-sans;
+
+  50% {
+    transform: translate3d(var(--particle-drift-x), var(--particle-drift-y), 0) scale(1.35);
+  }
+}
+
+@keyframes energy-particle-pulse {
+  0%,
+  100% {
+    opacity: calc(var(--particle-opacity) * 0.42);
+  }
+
+  50% {
+    opacity: var(--particle-opacity);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

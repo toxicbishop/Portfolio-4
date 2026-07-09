@@ -1,72 +1,87 @@
-import { Variants } from 'framer-motion';
+import type { Variants } from "framer-motion"
 
-// Fade in variants
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.6 } },
-};
+export const viewportOnce = {
+  once: true,
+  amount: 0.24,
+  margin: "0px 0px -120px 0px",
+} as const
 
-// Staggered children
-export const staggerContainer = {
-  hidden: { opacity: 0 },
+export const softSpring = {
+  type: "spring",
+  stiffness: 140,
+  damping: 18,
+  mass: 0.8,
+} as const
+
+export const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+export const fadeDown: Variants = {
+  hidden: { opacity: 0, y: -18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+export const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+export const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
+      staggerChildren: 0.09,
+      delayChildren: 0.08,
     },
   },
-};
+}
 
-// Slide up
-export const slideUp = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
-};
-
-// Slide down
-export const slideDown = {
-  hidden: { y: -20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
-};
-
-// Scale
-export const scaleIn = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } }
-};
-
-// Hover scale
-export const hoverScale = {
-  whileHover: { scale: 1.05 },
-  whileTap: { scale: 0.95 },
-};
-
-// Press effect
-export const pressEffect = {
-  whileTap: { scale: 0.95 },
-};
-
-// 3D tilt (will be used with custom)
-export const tilt = {
-  whileHover: { rotateX: 10, rotateY: -10 },
-  whileTap: { rotateX: 0, rotateY: 0, scale: 0.95 },
-};
-
-// Float animation
-export const float = {
-  hidden: { y: 0 },
+export const heroWord: Variants = {
+  hidden: { opacity: 0, y: 42, rotateX: -24 },
   visible: {
-    y: [-10, 10, -10],
-    transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
   },
-};
+}
 
-// Pulse
-export const pulse = {
-  hidden: { scale: 1 },
+export const sectionHeader: Variants = {
+  hidden: { opacity: 0, y: 24 },
   visible: {
-    scale: [1, 1.05, 1],
-    transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
   },
-};
+}
+
+export const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 36, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: softSpring,
+  },
+}
+
+export const buttonMotion = {
+  rest: { y: 0, scale: 1 },
+  hover: { y: -2, scale: 1.025 },
+  tap: { y: 0, scale: 0.975 },
+  focus: { scale: 1.015 },
+} as const
