@@ -1,13 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import EnergyBeam from "@/components/ui/energy-beam";
 import { ArrowRight, Zap, Sparkles, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Frontend_skill, Backend_skill, DevTools, Socials, ProjectsData } from "@/constants";
+import {
+  Frontend_skill,
+  Backend_skill,
+  DevTools,
+  Socials,
+  ProjectsData,
+} from "@/constants";
+import { motion, MotionProps } from "framer-motion";
+import { useReducedMotion } from "@/animations/useReducedMotion";
+import { animateSkillCategories, useSkillIconHover, useSkillIconFloat } from "@/animations/gsap";
 
 export default function Home() {
+  const reducedMotion = useReducedMotion();
+
+  // Refs for skill categories
+  const frontendRef = useRef<HTMLDivElement>(null);
+  const backendRef = useRef<HTMLDivElement>(null);
+  const devtoolsRef = useRef<HTMLDivElement>(null);
+
+  // Animate skill categories with GSAP
+  useEffect(() => {
+    const elements = [frontendRef.current, backendRef.current, devtoolsRef.current]
+      .filter((el): el is HTMLDivElement => el !== null);
+
+    if (elements.length > 0) {
+      const cleanup = animateSkillCategories(elements, 0.2);
+      return cleanup;
+    }
+  }, []);
+
+  // Helper to get motion props based on reduced motion preference
+  const getMotionProps = <T,>(defaults: T): Partial<MotionProps> => {
+    if (reducedMotion) {
+      // If reduced motion, set initial and animate to the same final state
+      return { initial: undefined as any, animate: undefined as any };
+    }
+    return {} as Partial<MotionProps>;
+  };
+
+  // Helper for hover/tap styles
+  const getHoverStyles = () => (reducedMotion ? {} : { scale: 1.05, rotate: 0 });
+  const getTapStyles = () => (reducedMotion ? {} : { scale: 0.95 });
+
+  // Float animation variants for skill icons
+  const floatVariants = {
+    hover: { y: -5, scale: 1.05 },
+    tap: { scale: 0.95 },
+  };
+
   return (
     <main className="relative min-h-screen bg-black text-white font-sans selection:bg-white/30">
       {/* Background Energy Beam Effect - FIXED to stay in place while scrolling */}
@@ -29,7 +75,13 @@ export default function Home() {
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
             <div className="flex gap-4">
               {Socials.map((social) => (
-                <a key={social.name} href={social.link} target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform opacity-70 hover:opacity-100">
+                <a
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:scale-110 transition-transform opacity-70 hover:opacity-100"
+                >
                   <Image src={social.src} alt={social.name} width={24} height={24} className="invert" />
                 </a>
               ))}
@@ -39,12 +91,24 @@ export default function Home() {
 
         {/* Hero Section */}
         <section id="about" className="flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto w-full py-32">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-8 backdrop-blur-md animate-in slide-in-from-top-4 duration-700 fade-in">
+          <motion.div
+            {...getMotionProps({ y: -20, opacity: 0 })}
+            initial={reducedMotion ? undefined : { y: -20, opacity: 0 }}
+            animate={reducedMotion ? undefined : { y: 0, opacity: 1 }}
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-medium mb-8 backdrop-blur-md"
+          >
             <Sparkles className="w-4 h-4 text-cyan-400" />
             <span>Full Stack Developer</span>
-          </div>
-          
-          <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-linear-to-br from-white to-white/50 drop-shadow-lg animate-in fade-in zoom-in-95 duration-1000 delay-150">
+          </motion.div>
+
+          <motion.h1
+            {...getMotionProps({ opacity: 0, scale: 0.95 })}
+            initial={reducedMotion ? undefined : { opacity: 0, scale: 0.95 }}
+            animate={reducedMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.15 }}
+            className="text-6xl md:text-8xl font-black tracking-tight mb-8 leading-[1.1] text-transparent bg-clip-text bg-linear-to-br from-white to-white/50 drop-shadow-lg"
+          >
             Building Digital <br className="hidden md:block" /> Experiences
           </h1>
           
@@ -65,7 +129,7 @@ export default function Home() {
                 GitHub
               </Button>
             </a>
-          </div>
+          </motion.div>
         </section>
 
         {/* Skills Section */}
@@ -74,44 +138,117 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">Core Skills</h2>
             <p className="text-white/60 text-lg">Technologies and tools I use to bring ideas to life.</p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Frontend */}
-            <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Frontend</h3>
-              <div className="flex flex-wrap gap-4">
-                {Frontend_skill.map((skill) => (
-                  <div key={skill.skill_name} className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner">
-                    <Image src={skill.Image} alt={skill.skill_name} width={skill.width} height={skill.height} className="object-contain" style={{ width: "auto", height: "auto" }} />
-                    <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80">{skill.skill_name}</span>
-                  </div>
-                ))}
+            {/* Refs for skill categories */}
+            <div ref={frontendRef}>
+              {/* Frontend */}
+              <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
+                <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Frontend</h3>
+                <div className="flex flex-wrap gap-4">
+                  {Frontend_skill.map((skill, index) => (
+                    <motion.div
+                      key={skill.skill_name}
+                      initial={{ y: 0 }}
+                      animate={{
+                        y: [0, -10, 0],
+                        transition: {
+                          duration: 2 + index * 0.2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut"
+                        }
+                      }}
+                      whileHover={getHoverStyles()}
+                      whileTap={getTapStyles()}
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                    >
+                      <Image
+                        src={skill.Image}
+                        alt={skill.skill_name}
+                        width={skill.width}
+                        height={skill.height}
+                        className="object-contain"
+                        style={{ width: "auto", height: "auto" }}
+                      />
+                      <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80">{skill.skill_name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Backend */}
-            <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Backend</h3>
-              <div className="flex flex-wrap gap-4">
-                {Backend_skill.map((skill) => (
-                  <div key={skill.skill_name} className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner">
-                    <Image src={skill.Image} alt={skill.skill_name} width={skill.width} height={skill.height} className="object-contain" style={{ width: "auto", height: "auto" }} />
-                    <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80 whitespace-nowrap">{skill.skill_name}</span>
-                  </div>
-                ))}
+            <div ref={backendRef}>
+              {/* Backend */}
+              <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
+                <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Backend</h3>
+                <div className="flex flex-wrap gap-4">
+                  {Backend_skill.map((skill, index) => (
+                    <motion.div
+                      key={skill.skill_name}
+                      initial={{ y: 0 }}
+                      animate={{
+                        y: [0, -10, 0],
+                        transition: {
+                          duration: 2 + index * 0.2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut"
+                        }
+                      }}
+                      whileHover={getHoverStyles()}
+                      whileTap={getTapStyles()}
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                    >
+                      <Image
+                        src={skill.Image}
+                        alt={skill.skill_name}
+                        width={skill.width}
+                        height={skill.height}
+                        className="object-contain"
+                        style={{ width: "auto", height: "auto" }}
+                      />
+                      <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80">{skill.skill_name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* DevTools */}
-            <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Tools</h3>
-              <div className="flex flex-wrap gap-4">
-                {DevTools.map((skill) => (
-                  <div key={skill.skill_name} className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner">
-                    <Image src={skill.Image} alt={skill.skill_name} width={skill.width} height={skill.height} className="object-contain" style={{ width: "auto", height: "auto" }} />
-                    <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80">{skill.skill_name}</span>
-                  </div>
-                ))}
+            <div ref={devtoolsRef}>
+              {/* DevTools */}
+              <div className="rounded-3xl p-8 bg-black/50 border border-white/10 backdrop-blur-xl hover:border-white/30 transition-colors shadow-2xl">
+                <h3 className="text-2xl font-semibold mb-6 text-white/90 border-b border-white/10 pb-4">Tools</h3>
+                <div className="flex flex-wrap gap-4">
+                  {DevTools.map((skill, index) => (
+                    <motion.div
+                      key={skill.skill_name}
+                      initial={{ y: 0 }}
+                      animate={{
+                        y: [0, -10, 0],
+                        transition: {
+                          duration: 2 + index * 0.2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut"
+                        }
+                      }}
+                      whileHover={getHoverStyles()}
+                      whileTap={getTapStyles()}
+                      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 w-[90px] h-[90px] shadow-inner"
+                    >
+                      <Image
+                        src={skill.Image}
+                        alt={skill.skill_name}
+                        width={skill.width}
+                        height={skill.height}
+                        className="object-contain"
+                        style={{ width: "auto", height: "auto" }}
+                      />
+                      <span className="absolute -bottom-6 opacity-0 group-hover:opacity-100 text-xs font-medium transition-opacity text-white/80">{skill.skill_name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -123,16 +260,18 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">Featured Projects</h2>
             <p className="text-white/60 text-lg">Some of the recent work I&apos;ve done.</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {ProjectsData.map((project) => (
-              <div 
-                key={project.title} 
+              <motion.div
+                key={project.title}
+                whileInView={reducedMotion ? {} : { scale: 1.03, opacity: 1 }}
+                viewport={{ once: true, margin: "-200px" }}
                 className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-black/60 border border-white/10 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-white/20 hover:-translate-y-1"
               >
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
+                <Image
+                  src={project.image}
+                  alt={project.title}
                   fill
                   unoptimized
                   className="object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500 group-hover:scale-105"
@@ -171,7 +310,7 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -186,7 +325,13 @@ export default function Home() {
             <p>© {new Date().getFullYear()} Pranav Arun. Built with Next.js & Tailwind CSS.</p>
             <div className="flex gap-6">
               {Socials.map((social) => (
-                <a key={social.name} href={social.link} target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                <a
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-2"
+                >
                   <Image src={social.src} alt={social.name} width={16} height={16} className="invert opacity-50" />
                   {social.name}
                 </a>
@@ -198,4 +343,3 @@ export default function Home() {
     </main>
   );
 }
-
