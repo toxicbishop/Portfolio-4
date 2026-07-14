@@ -12,7 +12,7 @@ A cinematic, high-performance portfolio built with Next.js, React, and Tailwind 
 
 |               Experience                |                Tech Stack                  |
 | :--------------------------------------: | :----------------------------------------: |
-| ![Experience](public/assets/experience.png) | ![Tech Stack](public/assets/teach-stack.png) |
+| ![Experience](public/assets/experience.png) | ![Tech Stack](public/assets/tech-stack.png) |
 
 |                 Projects                  |
 | :---------------------------------------: |
