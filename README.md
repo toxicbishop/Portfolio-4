@@ -7,7 +7,7 @@ A cinematic, high-performance portfolio built with Next.js, React, and Tailwind 
 ## Showcase
 |                  Landing Page                  |             About              |
 | :--------------------------------------------: | :---------------------------------------: |
-| ![Landing Page](public/assets/Landing-Page.png) | ![About](public/assets/about.png) |
+| ![Landing Page](public/assets/Landing-page.png) | ![About](public/assets/about.png) |
 
 |                Experience                |             Tech Stack             |
 | :------------------------------------------: | :---------------------------------------: |
