@@ -6,12 +6,12 @@ A cinematic, high-performance portfolio built with Next.js, React, and Tailwind 
 
 ## Showcase
 
-<div style="overflow-x: auto; white-space: nowrap; padding-bottom: 15px;">
-  <img src="public/assets/Landing-page.png" width="600" alt="Landing Page" style="display: inline-block; margin-right: 15px;">
-  <img src="public/assets/about.png" width="600" alt="About Section" style="display: inline-block; margin-right: 15px;">
-  <img src="public/assets/experience.png" width="600" alt="Experience Section" style="display: inline-block; margin-right: 15px;">
-  <img src="public/assets/teach-stack.png" width="600" alt="Tech Stack" style="display: inline-block; margin-right: 15px;">
-  <img src="public/assets/projects.png" width="600" alt="Projects Section" style="display: inline-block;">
+<div align="center">
+
+| Landing Page | About Section | Experience Section | Tech Stack | Projects Section |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="public/assets/Landing-page.png" width="600" alt="Landing Page"> | <img src="public/assets/about.png" width="600" alt="About Section"> | <img src="public/assets/experience.png" width="600" alt="Experience Section"> | <img src="public/assets/teach-stack.png" width="600" alt="Tech Stack"> | <img src="public/assets/projects.png" width="600" alt="Projects Section"> |
+
 </div>
 
 ---
