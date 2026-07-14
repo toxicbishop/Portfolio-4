@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowRight, Code, Sparkle } from "@phosphor-icons/react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { fadeUp, scaleIn, staggerContainer, heroWord } from "@/animations/variants"
 
@@ -13,9 +12,9 @@ export function Hero() {
   return (
     <section
       id="about"
-      className="mx-auto flex w-full max-w-7xl flex-1 flex-col lg:flex-row items-center justify-between px-6 py-20 lg:py-32 gap-12"
+      className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-20 lg:py-48 gap-12"
     >
-      <div className="flex-1 flex flex-col items-start text-left max-w-2xl">
+      <div className="flex w-full flex-col items-start text-left max-w-2xl">
         <motion.div
           className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-sm font-medium shadow-[0_0_40px_rgba(34,211,238,0.12)] backdrop-blur-md text-foreground"
           initial={reducedMotion ? false : "hidden"}
@@ -86,25 +85,6 @@ export function Hero() {
           </motion.a>
         </motion.div>
       </div>
-
-      <motion.div
-        className="flex-1 w-full max-w-lg lg:max-w-none relative aspect-square lg:aspect-auto lg:h-[600px] rounded-3xl overflow-hidden border border-border shadow-2xl bg-muted/20 backdrop-blur-xl"
-        initial={reducedMotion ? false : "hidden"}
-        animate="visible"
-        variants={fadeUp}
-        transition={{ delay: 0.4 }}
-      >
-        <Image
-          src="/hero-abstract.png"
-          alt="Abstract Energy and Code Visualization"
-          fill
-          priority
-          className="object-cover opacity-90 transition-opacity hover:opacity-100"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-        />
-        {/* Subtle gradient overlay to blend the image into the background at edges if needed */}
-        <div className="absolute inset-0 bg-linear-to-tr from-background/20 to-transparent pointer-events-none" />
-      </motion.div>
     </section>
   )
 }
