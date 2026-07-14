@@ -5,14 +5,19 @@ A cinematic, high-performance portfolio built with Next.js, React, and Tailwind 
 ---
 
 ## Showcase
-|                  Landing Page                  |             About              |
-| :--------------------------------------------: | :---------------------------------------: |
-| ![Landing Page](public/assets/Landing-page.png) | ![About](public/assets/about.png) |
 
-|                Experience                |             Tech Stack             |
-| :------------------------------------------: | :---------------------------------------: |
-| ![Experience](public/assets/experience.png) | ![Tech Stack](public/assets/tech-stack.png) |
----
+|                  Landing Page                   |                   About                    |
+| :---------------------------------------------: | :----------------------------------------: |
+| ![Landing Page](public/assets/Landing-page.png) | ![About](public/assets/about.png)          |
+
+|               Experience                |                Tech Stack                  |
+| :--------------------------------------: | :----------------------------------------: |
+| ![Experience](public/assets/experience.png) | ![Tech Stack](public/assets/teach-stack.png) |
+
+|                 Projects                  |
+| :---------------------------------------: |
+| ![Projects](public/assets/projects.png)   |
+
 
 ## Features
 - **Next.js 15 (App Router)**: Fast, optimized, and SEO-friendly React framework.
