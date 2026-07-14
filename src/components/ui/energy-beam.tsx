@@ -7,7 +7,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 interface EnergyBeamProps {
   projectId?: string
   className?: string
-  mouseEffect?: boolean
   particles?: boolean
 }
 
@@ -51,11 +50,9 @@ function seededParticle(index: number): ParticleStyle {
 export default function EnergyBeam({
   projectId = "hRFfUymDGOHwtFe7evR2",
   className = "",
-  mouseEffect = true,
   particles = true,
 }: EnergyBeamProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const reducedMotion = useReducedMotion()
 
@@ -102,26 +99,6 @@ export default function EnergyBeam({
     }
   }, [projectId])
 
-  useEffect(() => {
-    if (!mouseEffect || reducedMotion) {
-      return
-    }
-
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePos({ x: event.clientX, y: event.clientY })
-    }
-
-    const handleMouseLeave = () => setMousePos(null)
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true })
-    document.documentElement.addEventListener("mouseleave", handleMouseLeave)
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      document.documentElement.removeEventListener("mouseleave", handleMouseLeave)
-    }
-  }, [mouseEffect, reducedMotion])
-
   return (
     <div className={`relative h-screen w-full overflow-hidden bg-black ${className}`}>
       {particles && !reducedMotion && (
@@ -144,20 +121,6 @@ export default function EnergyBeam({
       />
 
       <div className="absolute inset-0 z-[2] pointer-events-none bg-[radial-gradient(circle_at_50%_45%,rgba(34,211,238,0.12),transparent_28%),linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.62))]" />
-
-      {mouseEffect && !reducedMotion && mousePos && (
-        <motion.div
-          aria-hidden="true"
-          className="pointer-events-none fixed z-[3] size-72 rounded-full bg-[radial-gradient(circle,rgba(103,232,249,0.18)_0%,rgba(255,255,255,0.09)_34%,transparent_70%)] blur-sm"
-          style={{
-            left: mousePos.x,
-            top: mousePos.y,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-          transition={{ type: "spring", stiffness: 120, damping: 24 }}
-        />
-      )}
 
       {!isLoaded && (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm">
