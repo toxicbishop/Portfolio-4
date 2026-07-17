@@ -143,7 +143,12 @@ export const ProjectsData = [
         image: "/projects/CRYPTVAULT.png",
         github: "https://github.com/toxicbishop/Crypt-Vault",
         website: "",
-        tags: ["C", "C++", "x86-64 Asm", "Solidity", "Makefile", "Shell"]
+        tags: ["C", "C++", "x86-64 Asm", "Solidity", "Makefile", "Shell"],
+        collaborators: [
+            "https://github.com/Mohammed0572",
+            "https://github.com/supr1795",
+            "https://github.com/Rohithgaloth"
+        ]
     },
     {
         title: "Weather ASCII",
