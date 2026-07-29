@@ -1,5 +1,16 @@
 # Pranav Arun — Personal Portfolio
 
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white)
+![Dependabot](https://img.shields.io/badge/Dependabot-Enabled-025E8C?logo=dependabot)
+![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)
+![License](https://img.shields.io/github/license/toxicbishop/portfolio-5)
+![Node](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=white)
+
 A modern, performance-focused personal portfolio built with **Next.js 15**, **TypeScript**, **Tailwind CSS v4**, and **Framer Motion**. Designed to showcase projects, experience, skills, and writing — with smooth animations, a clean typographic system, and a premium aesthetic.
 
 ---
@@ -8,7 +19,7 @@ A modern, performance-focused personal portfolio built with **Next.js 15**, **Ty
 
 ---
 
-## ✨ Features
+## Features
 
 - **Smooth scroll navigation** — hash-free, JS-powered section scrolling
 - **Parallax hero** — layered scroll transforms on portrait and watermark text
@@ -23,7 +34,7 @@ A modern, performance-focused personal portfolio built with **Next.js 15**, **Ty
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -37,7 +48,7 @@ A modern, performance-focused personal portfolio built with **Next.js 15**, **Ty
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -48,8 +59,8 @@ A modern, performance-focused personal portfolio built with **Next.js 15**, **Ty
 
 ```bash
 # Clone the repo
-git clone https://github.com/toxicbishop/portfolio.git
-cd portfolio
+git clone https://github.com/toxicbishop/portfolio-5.git
+cd portfolio-5
 
 # Install dependencies
 pnpm install
@@ -69,7 +80,7 @@ pnpm start
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 portfolio/
@@ -93,7 +104,7 @@ portfolio/
 
 ---
 
-## 🎨 Design Tokens
+## Design Tokens
 
 The design system uses a curated palette defined in `tailwind.config.ts`:
 
@@ -107,10 +118,10 @@ The design system uses a curated palette defined in `tailwind.config.ts`:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the terms of the [LICENSE](LICENSE) file.
 
 ---
 
-<p align="center">Designed & built by <a href="https://github.com/toxicbishop">Pranav Arun</a></p>
+<p align="center">Designed & built by <a href="https://github.com/toxicbishop">Pranav</a></p>
