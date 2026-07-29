@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Production builds
+dist/
+build/
+
+# Environment variables and local secrets
+.env*
+!.env.example
+
+# Logs
+*.log
+logs/
+pnpm-debug.log*
+
+# TypeScript incremental build information
+*.tsbuildinfo
+
+# Local tooling and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating-system files
+.DS_Store
+Thumbs.db

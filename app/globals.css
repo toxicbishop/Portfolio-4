@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F3EBDD;
+  --color-forest: #314D36;
+  --color-mustard: #F5B321;
+  --color-terracotta: #C46F3A;
+  --color-ink: #1A1A1A;
+  --color-muted: #5A5A5A;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes draw-line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+::selection {
+  background-color: #314D36;
+  color: #F3EBDD;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F3EBDD;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section-watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 20rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(49, 77, 54, 0.04);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #314D36;
+  font-size: 0.75rem;
+}
+
+.portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  background-color: #314D36;
+  overflow: hidden;
+}
+
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(243, 235, 221, 0.1);
+}
+
+.floating-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  border: 1px solid #1A1A1A;
+  color: #1A1A1A;
+}
+
+.floating-label-light {
+  border-color: rgba(243, 235, 221, 0.3);
+  color: #F3EBDD;
+}
