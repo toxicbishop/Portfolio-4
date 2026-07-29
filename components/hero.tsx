@@ -27,7 +27,7 @@ export function Hero() {
     <section className="min-h-dvh flex items-center px-6 md:px-10 pt-24 pb-12 relative overflow-hidden">
       <motion.div
         style={{ y: watermarkY, opacity }}
-        className="absolute top-20 -right-20 font-display text-[20vw] leading-none text-forest/5 pointer-events-none select-none"
+        className="absolute top-20 -right-20 font-display text-[20vw] leading-none text-forest/5 pointer-events-none select-none z-20"
       >
         PRANAV
       </motion.div>
@@ -35,7 +35,7 @@ export function Hero() {
       <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-0 items-center relative z-10">
         <motion.div
           style={{ y: portraitY }}
-          className="md:col-span-5 relative h-full min-h-[60vh] md:min-h-[70vh]"
+          className="md:col-span-5 relative h-full min-h-[60vh] md:min-h-[70vh] md:-ml-10 lg:-ml-20"
         >
           <div className="portrait-frame rounded-tr-[3rem] rounded-bl-[3rem]">
             <Image
