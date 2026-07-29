@@ -110,9 +110,7 @@ export function Projects() {
               )}
               <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
               <div className="relative z-10 p-8 md:p-10">
-                <div className="absolute top-6 right-6 text-cream/10 font-display text-[6rem] leading-none">
-                  &#10022;
-                </div>
+
                 <h3 className="font-display text-2xl md:text-4xl text-cream mb-3">
                   {project.title}
                 </h3>

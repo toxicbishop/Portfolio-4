@@ -47,30 +47,9 @@ export function Hero() {
               quality={100}
               sizes="(max-width: 768px) 100vw, 40vw"
             />
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-              <motion.span
-                {...fade(0.6)}
-                className="font-mono text-[10px] text-cream/60 tracking-widest uppercase"
-              >
-                Engineer · AI/ML
-              </motion.span>
-              <motion.span
-                {...fade(0.7)}
-                className="text-cream/30 text-2xl"
-              >
-                &#10022;
-              </motion.span>
-            </div>
+
           </div>
-          <motion.div
-            {...(reduce ? {} : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: 1, duration: 0.8 } })}
-            className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6"
-          >
-            <span className="floating-label">
-              <span className="w-2 h-2 rounded-full bg-forest" />
-              Open for work
-            </span>
-          </motion.div>
+
         </motion.div>
 
         <motion.div
