@@ -52,7 +52,7 @@ A modern, performance-focused personal portfolio built with **Next.js 15**, **Ty
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - pnpm
 
 ### Installation
