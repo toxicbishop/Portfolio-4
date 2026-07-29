@@ -4,25 +4,14 @@ import { motion, useReducedMotion } from "motion/react";
 
 const roles = [
   {
-    role: "Software Development Intern",
     company: "Cognifyz Technologies",
+    companyUrl: "https://www.linkedin.com/company/cognifyz-techonologies",
     period: "Mar 2026 — May 2026",
-    description:
-      "Gained hands-on experience across multiple domains of software engineering. Built and maintained production-grade applications, worked on ML models and data-driven solutions, and developed mobile applications for the Android platform.",
-  },
-  {
-    role: "AI Engineering Researcher",
-    company: "KSSEM AI & ML Lab",
-    period: "2025 — Present",
-    description:
-      "Developing large language model applications focused on chain-of-thought reasoning and retrieval-augmented generation. Built end-to-end pipelines for structured LLM output and conducted experiments on prompting strategies.",
-  },
-  {
-    role: "Freelance Full-Stack Developer",
-    company: "Self-Employed",
-    period: "2024 — Present",
-    description:
-      "Designed and built custom web applications, RESTful APIs, and AI-integrated platforms for early-stage startups. Delivered end-to-end solutions spanning authentication, data visualization, and cloud deployment.",
+    description: [
+      "Software Development — Built and maintained production-grade applications",
+      "Machine Learning — Worked on ML models and data-driven solutions",
+      "Android Development — Developed mobile applications for the Android platform",
+    ],
   },
 ];
 
@@ -89,15 +78,33 @@ export function Experience() {
                 <span className="font-mono text-[11px] text-muted uppercase tracking-wider block mb-1">
                   {r.period}
                 </span>
-                <h3 className="font-display text-lg text-ink">
-                  {r.role}
-                </h3>
-                <p className="text-sm text-muted mt-0.5 mb-2">
-                  {r.company}
-                </p>
-                <p className="text-sm text-ink/70 leading-relaxed">
-                  {r.description}
-                </p>
+                {r.companyUrl ? (
+                  <a
+                    href={r.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-forest hover:underline mt-0.5 mb-2 inline-block"
+                  >
+                    {r.company}
+                  </a>
+                ) : (
+                  <p className="text-sm text-muted mt-0.5 mb-2">{r.company}</p>
+                )}
+                {Array.isArray(r.description) ? (
+                  <ul className="space-y-1.5 mt-2">
+                    {r.description.map((point, i) => {
+                      const [bold, rest] = point.split(" — ");
+                      return (
+                        <li key={i} className="text-sm text-ink/70 leading-relaxed flex gap-2">
+                          <span className="text-forest mt-1 shrink-0">›</span>
+                          <span><span className="font-medium text-ink">{bold}</span>{rest ? ` — ${rest}` : ""}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-ink/70 leading-relaxed">{r.description}</p>
+                )}
               </motion.div>
             ))}
           </motion.div>

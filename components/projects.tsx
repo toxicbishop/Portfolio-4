@@ -58,6 +58,14 @@ const projects = [
     href: "https://github.com/toxicbishop/Brain-Tumor-Prediction-ML",
     feature: false,
   },
+  {
+    title: "Finance Policy RAG Agent",
+    description:
+      "24/7 automated RAG agent for answering finance policy questions — n8n no-code pipeline paired with a Python shadow layer using FastAPI and Streamlit.",
+    tags: ["AI", "RAG", "FastAPI", "Streamlit", "n8n"],
+    href: "https://github.com/toxicbishop/finance-policy-rag-agent",
+    feature: false,
+  },
 ];
 
 export function Projects() {

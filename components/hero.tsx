@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { GithubLogo, LinkedinLogo, At, InstagramLogo, ArrowDown } from "@phosphor-icons/react";
-import { Magnetic } from "@/components/magnetic";
+
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -79,47 +79,35 @@ export function Hero() {
             {...fade(0.4)}
             className="flex items-center gap-3"
           >
-            <Magnetic>
-              <a
-                href="#work"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover:bg-mustard/90 active:scale-[0.97] transition-all"
-              >
-                View work <ArrowDown size={14} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ink/20 text-ink text-sm font-medium hover:bg-ink/5 active:scale-[0.97] transition-all"
-              >
-                Get in touch
-              </a>
-            </Magnetic>
+            <button
+              onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover:bg-mustard/90 active:scale-[0.97] transition-all"
+            >
+              View work <ArrowDown size={14} />
+            </button>
+            <button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ink/20 text-ink text-sm font-medium hover:bg-ink/5 active:scale-[0.97] transition-all"
+            >
+              Get in touch
+            </button>
           </motion.div>
           <motion.div
             {...fade(0.5)}
             className="flex items-center gap-4 mt-8"
           >
-            <Magnetic>
-              <a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="GitHub">
-                <GithubLogo size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a href="https://www.linkedin.com/in/pranav-arun" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="LinkedIn">
-                <LinkedinLogo size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a href="https://www.instagram.com/toxicbishop_" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="Instagram">
-                <InstagramLogo size={18} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a href="mailto:pranavarun19@gmail.com" className="text-muted hover:text-ink transition-colors block" aria-label="Email">
-                <At size={18} />
-              </a>
-            </Magnetic>
+            <a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="GitHub">
+              <GithubLogo size={18} />
+            </a>
+            <a href="https://www.linkedin.com/in/pranav-arun" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="LinkedIn">
+              <LinkedinLogo size={18} />
+            </a>
+            <a href="https://www.instagram.com/toxicbishop_" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="Instagram">
+              <InstagramLogo size={18} />
+            </a>
+            <a href="mailto:pranavarun19@gmail.com" className="text-muted hover:text-ink transition-colors block" aria-label="Email">
+              <At size={18} />
+            </a>
           </motion.div>
         </motion.div>
       </div>
