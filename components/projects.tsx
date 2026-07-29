@@ -103,12 +103,12 @@ export function Projects() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover opacity-30 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                   quality={100}
                   sizes="(max-width: 768px) 100vw, 60vw"
                 />
               )}
-              <div className="absolute inset-0 bg-linear-to-t from-forest/90 via-forest/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
               <div className="relative z-10 p-8 md:p-10">
                 <div className="absolute top-6 right-6 text-cream/10 font-display text-[6rem] leading-none">
                   &#10022;
