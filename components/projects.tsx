@@ -6,12 +6,12 @@ import { ArrowUpRight } from "@phosphor-icons/react";
 
 const projects = [
   {
-    title: "KSSEM College ERP",
+    title: "Voting System",
     description:
-      "Full-stack ERP system for college administration — attendance, grades, scheduling, and student lifecycle management.",
-    tags: ["Full-Stack", "Node.js", "Postgres", "React"],
-    href: "https://github.com/toxicbishop/KSSEM-College-ERP-System",
-    image: "/Projrcts/Clg-ERP-LandingPage.png",
+      "A secure electronic voting system. Contributors: Syed (@Mohammed0572), Supreeth (@supr1795), and Rohith (@Rohithgaloth).",
+    tags: ["Web", "System"],
+    href: "https://github.com/Mohammed0572/VotingSystem",
+    image: "/Projrcts/voting-system.gif",
     feature: true,
   },
   {
@@ -66,6 +66,56 @@ const projects = [
     href: "https://github.com/toxicbishop/finance-policy-rag-agent",
     feature: false,
   },
+  {
+    title: "nanoGPT",
+    description:
+      "A character-level GPT model built from scratch in PyTorch, exclusively trained to generate text in the style of Shakespeare. Features a modular RAG pipeline.",
+    tags: ["AI", "PyTorch", "LLMs", "Python"],
+    href: "https://github.com/toxicbishop/nanoGPT",
+    feature: false,
+  },
+  {
+    title: "KSSEM College ERP",
+    description:
+      "Full-stack ERP system for college administration — attendance, grades, scheduling, and student lifecycle management.",
+    tags: ["Full-Stack", "Node.js", "Postgres", "React"],
+    href: "https://github.com/toxicbishop/KSSEM-College-ERP-System",
+    image: "/Projrcts/Clg-ERP-LandingPage.png",
+    feature: true,
+  },
+  {
+    title: "VITAL Health App",
+    description:
+      "A premium, multi-platform health ecosystem (Android) with a minimalist aesthetic. Tracks daily metrics—weight, blood pressure, heart rate—with offline-first persistence and seamless cloud sync via Supabase.",
+    tags: ["Flutter", "Android", "Supabase", "Health"],
+    href: "https://github.com/toxicbishop/VITAL-Health-App-Flutter",
+    feature: false,
+  },
+  {
+    title: "Markdroid",
+    description:
+      "Android app to convert Markdown files to PDF. Built with Flutter.",
+    tags: ["Flutter", "Android", "Markdown", "PDF"],
+    href: "https://github.com/toxicbishop/markdroid",
+    feature: false,
+  },
+  {
+    title: "Distributed Web Scraper",
+    description:
+      "Production-grade distributed web scraper utilizing FastAPI, Celery, Playwright, and BeautifulSoup. Features JWT auth, Redis deduplication, PostgreSQL persistence, and AWS S3/CSV export.",
+    tags: ["FastAPI", "Python", "Celery", "Redis", "Playwright"],
+    href: "https://github.com/toxicbishop/Web-Scraper",
+    feature: false,
+  },
+  {
+    title: "Weather ASCII",
+    description:
+      "A terminal-based weather application that renders immersive ASCII animations of current weather conditions using real-time data from Open-Meteo.",
+    tags: ["CLI", "Terminal", "API"],
+    href: "https://github.com/toxicbishop/Weather-ascii",
+    image: "/Projrcts/weather-terminal.gif",
+    feature: false,
+  },
 ];
 
 export function Projects() {
@@ -97,14 +147,20 @@ export function Projects() {
         </motion.div>
 
         <div className="grid md:grid-cols-6 gap-5">
-          {feature.map((project) => (
+          {feature.map((project, i) => (
             <motion.a
               key={project.title}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              {...anim(0.1)}
-              className="md:col-span-4 md:row-span-2 group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-all duration-300 shimmer-card glow-border"
+              {...anim(0.1 + i * 0.05)}
+              className={`${
+                i === 0
+                  ? "md:col-span-4 md:row-span-2 min-h-[400px]"
+                  : i === 1
+                  ? "md:col-span-2 md:row-span-2 min-h-[400px]"
+                  : "md:col-span-3 md:row-span-1 min-h-[320px]"
+              } group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-all duration-300 shimmer-card glow-border`}
             >
               {project.image && (
                 <Image
@@ -118,7 +174,6 @@ export function Projects() {
               )}
               <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
               <div className="relative z-10 p-8 md:p-10">
-
                 <h3 className="font-display text-2xl md:text-4xl text-cream mb-3">
                   {project.title}
                 </h3>
@@ -141,18 +196,20 @@ export function Projects() {
               </div>
             </motion.a>
           ))}
+        </div>
 
-          {rest.slice(0, 2).map((project, i) => (
+        <div className="grid md:grid-cols-3 gap-5 mt-5">
+          {rest.map((project, i) => (
             <motion.a
               key={project.title}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              {...anim(0.15 + i * 0.05)}
-              className="md:col-span-2 group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
+              {...anim(0.2 + i * 0.05)}
+              className="group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
             >
               {project.image && (
-                <div className="relative w-full h-36 overflow-hidden">
+                <div className="relative w-full h-40 overflow-hidden shrink-0">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -164,7 +221,7 @@ export function Projects() {
                   <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-cream/10" />
                 </div>
               )}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between gap-4">
                 <div>
                   <h3 className="font-display text-xl text-ink mb-2">
                     {project.title}
@@ -173,7 +230,7 @@ export function Projects() {
                     {project.description}
                   </p>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span
@@ -186,41 +243,6 @@ export function Projects() {
                   </div>
                   <ArrowUpRight size={14} className="text-muted group-hover:text-ink transition-colors shrink-0" />
                 </div>
-              </div>
-            </motion.a>
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-5 mt-5">
-          {rest.slice(2).map((project, i) => (
-            <motion.a
-              key={project.title}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              {...anim(0.2 + i * 0.05)}
-              className="group relative bg-white rounded-2xl p-6 border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
-            >
-              <div>
-                <h3 className="font-display text-lg text-ink mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed mb-4">
-                  {project.description}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-forest/5 text-forest"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <ArrowUpRight size={14} className="text-muted group-hover:text-ink transition-colors shrink-0" />
               </div>
             </motion.a>
           ))}
