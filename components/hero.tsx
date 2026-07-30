@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { GithubLogo, LinkedinLogo, At, InstagramLogo, ArrowDown } from "@phosphor-icons/react";
+import { GithubLogo, LinkedinLogo, At, InstagramLogo, ArrowDown, DiscordLogo, XLogo, GitlabLogoSimple } from "@phosphor-icons/react";
 
 
 export function Hero() {
@@ -99,8 +99,17 @@ export function Hero() {
             <a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="GitHub">
               <GithubLogo size={18} />
             </a>
+            <a href="https://gitlab.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="GitLab">
+              <GitlabLogoSimple size={18} />
+            </a>
             <a href="https://www.linkedin.com/in/pranav-arun" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="LinkedIn">
               <LinkedinLogo size={18} />
+            </a>
+            <a href="https://x.com/Pranav63076884" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="X (Twitter)">
+              <XLogo size={18} />
+            </a>
+            <a href="https://discord.com/users/701732138269016064" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="Discord">
+              <DiscordLogo size={18} />
             </a>
             <a href="https://www.instagram.com/toxicbishop_" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="Instagram">
               <InstagramLogo size={18} />

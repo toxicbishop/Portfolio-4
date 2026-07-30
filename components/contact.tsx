@@ -55,12 +55,42 @@ export function Contact() {
               </Magnetic>
               <Magnetic>
                 <a
+                  href="https://gitlab.com/toxicbishop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-cream/20 text-cream/80 text-sm font-medium hover:bg-cream/10 active:scale-[0.97] transition-all"
+                >
+                  GitLab
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
                   href="https://www.linkedin.com/in/pranav-arun"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-cream/20 text-cream/80 text-sm font-medium hover:bg-cream/10 active:scale-[0.97] transition-all"
                 >
                   LinkedIn
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="https://x.com/Pranav63076884"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-cream/20 text-cream/80 text-sm font-medium hover:bg-cream/10 active:scale-[0.97] transition-all"
+                >
+                  X (Twitter)
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="https://discord.com/users/701732138269016064"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-cream/20 text-cream/80 text-sm font-medium hover:bg-cream/10 active:scale-[0.97] transition-all"
+                >
+                  Discord
                 </a>
               </Magnetic>
               <Magnetic>
