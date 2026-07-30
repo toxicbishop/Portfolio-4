@@ -104,7 +104,7 @@ export function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               {...anim(0.1)}
-              className="md:col-span-4 md:row-span-2 group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-all duration-300"
+              className="md:col-span-4 md:row-span-2 group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-all duration-300 shimmer-card glow-border"
             >
               {project.image && (
                 <Image
@@ -149,7 +149,7 @@ export function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               {...anim(0.15 + i * 0.05)}
-              className="md:col-span-2 group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="md:col-span-2 group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
             >
               {project.image && (
                 <div className="relative w-full h-36 overflow-hidden">
@@ -199,7 +199,7 @@ export function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               {...anim(0.2 + i * 0.05)}
-              className="group relative bg-white rounded-2xl p-6 border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="group relative bg-white rounded-2xl p-6 border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
             >
               <div>
                 <h3 className="font-display text-lg text-ink mb-2">

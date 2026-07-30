@@ -37,7 +37,7 @@ export function Hero() {
           style={{ y: portraitY }}
           className="md:col-span-5 relative h-full min-h-[60vh] md:min-h-[70vh]"
         >
-          <div className="portrait-frame rounded-tr-[3rem] rounded-bl-[3rem]">
+          <div className="portrait-frame rounded-tr-[3rem] rounded-bl-[3rem] glow-border">
             <Image
               src="/profile-avatar.jpg"
               alt="Pranav Arun"
@@ -64,7 +64,7 @@ export function Hero() {
           </motion.p>
           <motion.h1
             {...fade(0.2)}
-            className="font-display text-[4rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] tracking-tight text-ink -ml-0.5"
+            className="font-display text-[4rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.85] tracking-tight text-gradient -ml-0.5"
           >
             Pranav Arun
           </motion.h1>
@@ -81,7 +81,7 @@ export function Hero() {
           >
             <button
               onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover:bg-mustard/90 active:scale-[0.97] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover:bg-mustard/90 active:scale-[0.97] transition-all hover-glow"
             >
               View work <ArrowDown size={14} />
             </button>

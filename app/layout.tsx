@@ -28,6 +28,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <div className="bg-noise"></div>
         <Nav />
         <main>{children}</main>
         <Footer />

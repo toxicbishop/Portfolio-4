@@ -18,7 +18,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 bg-cream/80 backdrop-blur-md border-b border-ink/10">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 bg-cream/70 backdrop-blur-xl backdrop-saturate-150 border-b border-white/20 shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
