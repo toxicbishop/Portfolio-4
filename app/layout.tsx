@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { Preloader } from "@/components/preloader";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <Preloader />
         <div className="bg-noise"></div>
         <Nav />
         <main>{children}</main>
