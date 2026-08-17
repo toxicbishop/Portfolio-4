@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { GithubLogo, LinkedinLogo, At, InstagramLogo, ArrowDown, DiscordLogo, XLogo, GitlabLogoSimple } from "@phosphor-icons/react";
 
+// Canonical --ease-out from animate skill: strong ease-out for UI entrances
+const EASE_OUT = [0.23, 1, 0.32, 1] as [number, number, number, number];
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -14,13 +16,20 @@ export function Hero() {
   const watermarkY = useTransform(scrollY, [0, 800], [0, 200]);
   const opacity = useTransform(scrollY, [0, 600], [1, 0.3]);
 
+  /*
+    Was: { y: 20, opacity: 0 } → { y: 0, opacity: 1 }
+         y shorthand is not hardware-accelerated under load (animate skill §4).
+    Fixed: full transform string.
+    Was: ease: [0.16, 1, 0.3, 1] (hand-rolled, not from the table)
+    Fixed: canonical --ease-out [0.23, 1, 0.32, 1]
+  */
   const fade = (delay = 0) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+          initial: { transform: "translateY(20px)", opacity: 0 },
+          animate: { transform: "translateY(0px)", opacity: 1 },
+          transition: { duration: 0.6, delay, ease: EASE_OUT },
         };
 
   return (
@@ -81,13 +90,13 @@ export function Hero() {
           >
             <button
               onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover:bg-mustard/90 active:scale-[0.97] transition-all hover-glow"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-mustard text-ink text-sm font-medium hover-glow active:scale-[0.97] transition-all"
             >
               View work <ArrowDown size={14} />
             </button>
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ink/20 text-ink text-sm font-medium hover:bg-ink/5 active:scale-[0.97] transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-ink/20 text-ink text-sm font-medium active:scale-[0.97] transition-all"
             >
               Get in touch
             </button>
@@ -96,6 +105,11 @@ export function Hero() {
             {...fade(0.5)}
             className="flex items-center gap-4 mt-8"
           >
+            {/*
+              Social icon hovers: color transitions are composited — no fix needed.
+              Gating with hover:hover is handled globally in globals.css for
+              any transform-based hovers; color-only transitions are safe on touch.
+            */}
             <a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink transition-colors block" aria-label="GitHub">
               <GithubLogo size={18} />
             </a>

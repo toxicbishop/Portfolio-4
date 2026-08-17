@@ -1,5 +1,9 @@
 "use client";
 
+// Social link arrow: uses transform + opacity — both composited.
+// Explicit transition values instead of implicit Tailwind utility.
+const ARROW_TRANSITION = "transform 200ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms cubic-bezier(0.23, 1, 0.32, 1)" as const;
+
 export function Footer() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -34,12 +38,12 @@ export function Footer() {
           <div>
             <h4 className="font-mono text-xs uppercase tracking-widest text-cream/40 mb-6">Socials</h4>
             <ul className="flex flex-col gap-4">
-              <li><a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">GitHub <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
-              <li><a href="https://gitlab.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">GitLab <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
-              <li><a href="https://www.linkedin.com/in/pranav-arun" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">LinkedIn <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
-              <li><a href="https://x.com/Pranav63076884" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">X (Twitter) <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
-              <li><a href="https://discord.com/users/701732138269016064" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">Discord <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
-              <li><a href="https://www.instagram.com/toxicbishop_" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">Instagram <span className="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 transform">&#8599;</span></a></li>
+              <li><a href="https://github.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">GitHub <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
+              <li><a href="https://gitlab.com/toxicbishop" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">GitLab <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
+              <li><a href="https://www.linkedin.com/in/pranav-arun" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">LinkedIn <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
+              <li><a href="https://x.com/Pranav63076884" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">X (Twitter) <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
+              <li><a href="https://discord.com/users/701732138269016064" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">Discord <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
+              <li><a href="https://www.instagram.com/toxicbishop_" target="_blank" rel="noopener noreferrer" className="hover:text-mustard transition-colors flex items-center justify-between group text-sm w-32">Instagram <span style={{ transition: ARROW_TRANSITION }} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0">&#8599;</span></a></li>
             </ul>
           </div>
         </div>

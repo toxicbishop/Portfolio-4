@@ -2,18 +2,21 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
+// Canonical --ease-out from animate skill
+const EASE_OUT = [0.23, 1, 0.32, 1] as [number, number, number, number];
+
 const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const paraItem = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  hidden: { transform: "translateY(24px)", opacity: 0 },
+  show: { transform: "translateY(0px)", opacity: 1, transition: { duration: 0.6, ease: EASE_OUT } },
 };
 
 export function About() {
@@ -21,10 +24,10 @@ export function About() {
   const anim = reduce
     ? {}
     : {
-        initial: { opacity: 0, y: 24 },
-        whileInView: { opacity: 1, y: 0 },
+        initial: { transform: "translateY(24px)", opacity: 0 },
+        whileInView: { transform: "translateY(0px)", opacity: 1 },
         viewport: { once: true, amount: 0.3 },
-        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+        transition: { duration: 0.6, ease: EASE_OUT },
       };
 
   return (
