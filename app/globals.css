@@ -12,6 +12,15 @@
   --font-mono: var(--font-mono);
 }
 
+/* ─── Canonical ease tokens (emilkowalski/skills animate) ─── */
+:root {
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ─── Keyframes ─── */
+
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -32,14 +41,34 @@
   }
 }
 
+/*
+  draw-line: was animating width (layout-triggering on every frame).
+  Fixed: scaleX() runs on the GPU, skips layout + paint.
+  Apply transform-origin: left on any element that uses this animation.
+*/
 @keyframes draw-line {
   0% {
-    width: 0;
+    transform: scaleX(0);
   }
   100% {
-    width: 100%;
+    transform: scaleX(1);
   }
 }
+
+/* ─── Reduced motion overrides ─── */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes float {
+    0%, 50%, 100% { transform: none; }
+  }
+  @keyframes fade-up {
+    0%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes draw-line {
+    0%, 100% { transform: scaleX(1); }
+  }
+}
+
+/* ─── Global ─── */
 
 ::selection {
   background-color: #314D36;
@@ -127,20 +156,24 @@ body {
   color: transparent;
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(245, 179, 33, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 15px 5px rgba(245, 179, 33, 0.6);
+/* ─── Hover glow ─────────────────────────────────────────────
+   Was: animation: pulse-glow 2s infinite on :hover
+        → box-shadow animation triggers paint on every frame.
+   Fixed: simple transition so the shadow is calculated once
+          on hover state change. Gated with (hover: hover) so
+          touch devices don't get a stuck hover state.
+*/
+.hover-glow {
+  transition: box-shadow 200ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-glow:hover {
+    box-shadow: 0 0 15px 5px rgba(245, 179, 33, 0.4);
   }
 }
 
-.hover-glow:hover {
-  animation: pulse-glow 2s infinite;
-}
-
-/* Custom Scrollbar */
+/* ─── Custom Scrollbar ─── */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -156,6 +189,10 @@ body {
   background: #1A1A1A;
 }
 
+/* ─── Shimmer card ───────────────────────────────────────────
+   Tightened from 0.6s to 0.4s; explicit ease token.
+   Gated with (hover: hover) so touch devices don't trigger it.
+*/
 .shimmer-card {
   position: relative;
   overflow: hidden;
@@ -175,15 +212,23 @@ body {
     transparent
   );
   transform: translateX(-100%);
-  transition: transform 0.6s;
+  transition: transform 0.4s var(--ease-in-out);
   z-index: 20;
   pointer-events: none;
 }
 
-.shimmer-card:hover::before {
-  transform: translateX(100%);
+@media (hover: hover) and (pointer: fine) {
+  .shimmer-card:hover::before {
+    transform: translateX(100%);
+  }
 }
 
+/* ─── Glow border ────────────────────────────────────────────
+   Was: bg-spin keyframe animation (background-position)
+        → paint-heavy, always running while hovered.
+   Fixed: gradient is already set; we just fade opacity in.
+          One composited-friendly opacity transition.
+*/
 .glow-border {
   position: relative;
 }
@@ -194,18 +239,13 @@ body {
   inset: -2px;
   border-radius: inherit;
   background: linear-gradient(45deg, #314D36, #F5B321, #C46F3A, #314D36);
-  background-size: 400%;
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 300ms var(--ease-out);
 }
 
-.glow-border:hover::before {
-  opacity: 1;
-  animation: bg-spin 3s linear infinite;
-}
-
-@keyframes bg-spin {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+@media (hover: hover) and (pointer: fine) {
+  .glow-border:hover::before {
+    opacity: 1;
+  }
 }
