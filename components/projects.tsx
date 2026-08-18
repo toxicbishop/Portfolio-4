@@ -4,6 +4,9 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "@phosphor-icons/react";
 
+// Canonical --ease-out from animate skill
+const EASE_OUT = [0.23, 1, 0.32, 1] as [number, number, number, number];
+
 const projects = [
   {
     title: "Voting System",
@@ -123,14 +126,20 @@ export function Projects() {
   const feature = projects.filter((p) => p.feature);
   const rest = projects.filter((p) => !p.feature);
 
+  /*
+    Was: y shorthand (not hardware-accelerated under load per animate skill §4)
+    Fixed: full transform string.
+    Was: ease [0.16, 1, 0.3, 1] (hand-rolled)
+    Fixed: canonical --ease-out [0.23, 1, 0.32, 1]
+  */
   const anim = (delay = 0) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 24 },
-          whileInView: { opacity: 1, y: 0 },
+          initial: { transform: "translateY(24px)", opacity: 0 },
+          whileInView: { transform: "translateY(0px)", opacity: 1 },
           viewport: { once: true, amount: 0.2 },
-          transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+          transition: { duration: 0.5, delay, ease: EASE_OUT },
         };
 
   return (
@@ -160,14 +169,14 @@ export function Projects() {
                   : i === 1
                   ? "md:col-span-2 md:row-span-2 min-h-[400px]"
                   : "md:col-span-3 md:row-span-1 min-h-[320px]"
-              } group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-all duration-300 shimmer-card glow-border`}
+              } group relative bg-forest rounded-4xl overflow-hidden flex flex-col justify-end hover:-translate-y-1 transition-transform duration-300 shimmer-card glow-border`}
             >
               {project.image && (
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover transition-transform duration-700 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-105"
                   quality={100}
                   sizes="(max-width: 768px) 100vw, 60vw"
                 />
@@ -206,7 +215,7 @@ export function Projects() {
               target="_blank"
               rel="noopener noreferrer"
               {...anim(0.2 + i * 0.05)}
-              className="group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shimmer-card"
+              className="group relative bg-white rounded-2xl overflow-hidden border border-ink/5 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between shimmer-card"
             >
               {project.image && (
                 <div className="relative w-full h-40 overflow-hidden shrink-0">
@@ -214,7 +223,7 @@ export function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-all duration-500"
+                    className="object-cover transition-transform duration-500 [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-105"
                     quality={100}
                     sizes="(max-width: 768px) 100vw, 30vw"
                   />
